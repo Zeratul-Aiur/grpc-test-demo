@@ -27,10 +27,10 @@ rules_proto_grpc_cpp_repos()
 
 http_archive(
     name = "com_github_grpc_grpc",
-    sha256 = "4ba97e54f6076ffbec0c8cf27c418910a3bc3c66281a664b6e6528fcbb49834e",
-    strip_prefix = "grpc-1.68.1",
+    sha256 = "f83aedc91b84d4c396d30b0b2a30f7113c651fe5bc180c8ac08a5f0ff7dcffd2",
+    strip_prefix = "grpc-1.67.1",
     urls = [
-        "https://github.com/grpc/grpc/archive/refs/tags/v1.68.1.zip",
+        "https://github.com/grpc/grpc/archive/refs/tags/v1.67.1.zip",
     ],
 )
 
