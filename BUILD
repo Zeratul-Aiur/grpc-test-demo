@@ -1,7 +1,7 @@
 load("@com_grail_bazel_compdb//:defs.bzl", "compilation_database")
 load("@com_grail_bazel_output_base_util//:defs.bzl", "OUTPUT_BASE")
 load("@rules_proto//proto:defs.bzl", "proto_library")
-load("@rules_proto_grpc//cpp:defs.bzl", "cpp_proto_library")
+load("@rules_proto_grpc//cpp:defs.bzl", "cpp_grpc_library")
 
 proto_library(
     name = "transfer_proto",
@@ -9,7 +9,7 @@ proto_library(
     deps = ["@com_google_protobuf//:any_proto"],
 )
 
-cpp_proto_library(
+cpp_grpc_library(
     name = "transfer_proto_lib",
     protos = [":transfer_proto"],
 )
