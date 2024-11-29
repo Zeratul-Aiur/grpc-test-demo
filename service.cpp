@@ -51,7 +51,7 @@ public:
   }
 };
 
-void RunServer() {
+void run_server() {
   std::string server_address("0.0.0.0:50051");
   FileTransferServiceImpl service;
 
@@ -65,6 +65,6 @@ void RunServer() {
 }
 
 int main() {
-  RunServer();
+  run_server();
   return 0;
 }
