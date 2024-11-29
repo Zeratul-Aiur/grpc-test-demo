@@ -41,3 +41,30 @@ grpc_deps()
 load("@com_github_grpc_grpc//bazel:grpc_extra_deps.bzl", "grpc_extra_deps")
 
 grpc_extra_deps()
+
+# For clangd auto complation.
+http_archive(
+    name = "com_grail_bazel_compdb",
+    sha256 = "0f80f0e46309c489c5fa17f6ad87612eb4011afe972fdcda538430ddfae6ad1a",
+    strip_prefix = "bazel-compilation-database-1c14b847c8b8fde1b022dafd41e7afaf5d2086bc",
+    urls = ["https://github.com/aqrose-aidi-sdk-team/bazel-compilation-database/archive/1c14b847c8b8fde1b022dafd41e7afaf5d2086bc.zip"],
+)
+
+load("@com_grail_bazel_compdb//:config.bzl", "config_compdb")
+
+config_compdb(
+    cuda_enable = True,
+    global_filter_flags = [
+        # clang doesn't understand gcc's -fno-canonical-system-headers.
+        # See here for more info:
+        # https://github.com/clangd/clangd/issues/1004
+        "-fno-canonical-system-headers",
+        # nvcc's
+        "-ccbin",
+        "-gencode",
+    ],
+)
+
+load("@com_grail_bazel_compdb//:deps.bzl", "bazel_compdb_deps")
+
+bazel_compdb_deps()
