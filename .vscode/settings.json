@@ -6,6 +6,7 @@
     "editor.guides.bracketPairs": "active",
     "cSpell.words": [
         "bazel",
+        "compdb",
         "protos",
         "srcs"
     ],
