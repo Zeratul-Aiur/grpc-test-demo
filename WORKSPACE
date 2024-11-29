@@ -4,15 +4,24 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 http_archive(
     name = "rules_proto_grpc",
-    sha256 = "507e38c8d95c7efa4f3b1c0595a8e8f139c885cb41a76cab7e20e4e67ae87731",
-    strip_prefix = "rules_proto_grpc-4.1.1",
-    urls = ["https://github.com/rules-proto-grpc/rules_proto_grpc/archive/4.1.1.tar.gz"],
+    sha256 = "2a0860a336ae836b54671cbbe0710eec17c64ef70c4c5a88ccfd47ea6e3739bd",
+    strip_prefix = "rules_proto_grpc-4.6.0",
+    urls = ["https://github.com/rules-proto-grpc/rules_proto_grpc/releases/download/4.6.0/rules_proto_grpc-4.6.0.tar.gz"],
 )
 
 load("@rules_proto_grpc//:repositories.bzl", "rules_proto_grpc_repos", "rules_proto_grpc_toolchains")
 
 rules_proto_grpc_toolchains()
 
+# load package:
+# @rules_proto
+# @rules_python
+# @build_bazel_rules_swift
+# @bazel_skylib
+# @rules_pkg
+# @com_google_protobuf
+# @com_github_grpc_grpc
+# @zlib
 rules_proto_grpc_repos()
 
 load("@rules_proto//proto:repositories.bzl", "rules_proto_dependencies", "rules_proto_toolchains")
@@ -24,15 +33,6 @@ rules_proto_toolchains()
 load("@rules_proto_grpc//cpp:repositories.bzl", rules_proto_grpc_cpp_repos = "cpp_repos")
 
 rules_proto_grpc_cpp_repos()
-
-http_archive(
-    name = "com_github_grpc_grpc",
-    sha256 = "f83aedc91b84d4c396d30b0b2a30f7113c651fe5bc180c8ac08a5f0ff7dcffd2",
-    strip_prefix = "grpc-1.67.1",
-    urls = [
-        "https://github.com/grpc/grpc/archive/refs/tags/v1.67.1.zip",
-    ],
-)
 
 load("@com_github_grpc_grpc//bazel:grpc_deps.bzl", "grpc_deps")
 
