@@ -17,6 +17,9 @@ cpp_grpc_library(
 cc_binary(
     name = "client",
     srcs = ["client.cpp"],
+    data = [
+        ":2gb_file",
+    ],
     deps = [
         ":transfer_proto_lib",
         "@com_github_grpc_grpc//:grpc",
@@ -45,4 +48,10 @@ compilation_database(
         ":client",
         ":service",
     ],
+)
+
+genrule(
+    name = "2gb_file",
+    outs = ["2gb_file.txt"],
+    cmd_bat = "fsutil file createnew $@ 2147483648",
 )
